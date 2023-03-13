@@ -16,7 +16,8 @@ function App() {
         const data = new FormData();
         data.append("name", file.name)
         data.append("file", file)
-      let response= await uploadFile(data)
+        let response = await uploadFile(data)
+        console.log(response);
       }
         
     }
@@ -33,7 +34,7 @@ function App() {
         <h1>Simple File Sharing</h1>
         <p>Upload and share the download link.</p>
         <button onClick={OnUploadClick}>Upload</button>
-        <input type="file" ref={fileinput} style={{display:"none"}} onChange={(e)=>setFile(e.target.files)} />
+        <input type="file" ref={fileinput} style={{display:"none"}} onChange={(e)=>setFile(e.target.files[0])} />
       </div>
     </div>
   );

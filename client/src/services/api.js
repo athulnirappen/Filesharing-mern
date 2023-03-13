@@ -6,6 +6,8 @@ export const uploadFile =async (data) => {
         let response = await axios.post(`${API_URL}/upload`, data)
         return response.data
         
+        
+        
     } catch (error) {
         console.log('error while calling api',error.message);
         
