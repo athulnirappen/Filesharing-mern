@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [file,setFile]=useState('')
+  const [result,setResult]=useState('')
   const fileinput = useRef();
   const OnUploadClick = () => {
     fileinput.current.click();
@@ -18,6 +19,7 @@ function App() {
         data.append("file", file)
         let response = await uploadFile(data)
         console.log(response);
+        setResult(response.path)
       }
         
     }
@@ -34,7 +36,8 @@ function App() {
         <h1>Simple File Sharing</h1>
         <p>Upload and share the download link.</p>
         <button onClick={OnUploadClick}>Upload</button>
-        <input type="file" ref={fileinput} style={{display:"none"}} onChange={(e)=>setFile(e.target.files[0])} />
+        <input type="file" ref={fileinput} style={{ display: "none" }} onChange={(e) => setFile(e.target.files[0])} />
+        <a href={result} target="">{ result}</a>
       </div>
     </div>
   );
